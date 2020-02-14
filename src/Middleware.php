@@ -23,7 +23,7 @@ class Middleware implements HTTPMiddleware
      * Enable minification
      * @var bool
      */
-    private static $enabled = false;
+    private static $enable = false;
 
 
     /**
@@ -65,7 +65,7 @@ class Middleware implements HTTPMiddleware
      */
     private function canRun()
     {
-        $confEnabled = $this->config()->get('cdn_rewrite');
+        $confEnabled = $this->config()->get('enable');
         $devEnabled = ((!Director::isDev()) || ($this->config()->get('enable_in_dev')));
         return ($confEnabled && $devEnabled);
     }
