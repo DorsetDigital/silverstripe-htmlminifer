@@ -1,23 +1,24 @@
 {
- "name": "dorsetdigital/silverstripe-cdnrewrite",
- "description": "Automatically rewrites the URLs of media and assets to use a CDN",
+ "name": "dorsetdigital/silverstripe-htmlminifier",
+ "description": "HTML minifier for Silverstripe",
  "type": "silverstripe-vendormodule",
- "homepage": "https://github.com/DorsetDigital/silverstripe-cdnrewrite",
- "keywords": ["silverstripe", "cdn"],
+ "homepage": "https://github.com/DorsetDigital/silverstripe-htmlminifier",
+ "keywords": ["silverstripe", "html", "minify", "performance"],
  "authors": [
   {
    "name": "Tim Burt",
    "email": "tim@dorset-digital.net"
   }
- ], 
+ ],
  "require": {
   "silverstripe/vendor-plugin": "^1.0",
-  "silverstripe/cms": "^4.0"
+  "silverstripe/cms": "^4",
+  "voku/html-min": "^4"
  },
  "license": "BSD-3-Clause",
  "autoload": {
   "psr-4": {
-   "DorsetDigital\\CDNRewrite\\": "src/"
+   "DorsetDigital\\SSMinifier\\": "src/"
   }
  },
  "extra": {
