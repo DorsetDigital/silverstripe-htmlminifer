@@ -36,4 +36,5 @@ The options are hopefully fairly self explanatory:
 
 
 # Credits
+* Uses the excellent HtmlMin package (https://github.com/voku/HtmlMin)
 * As always, thanks to the core team for all their hard work.  
