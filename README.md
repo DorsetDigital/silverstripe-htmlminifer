@@ -19,7 +19,7 @@ The module needs to be enabled in order to work. This can be done in a yml file:
 Name: miniferconfig
 ---
 
-DorsetDigital\SSMinify\Middleware:
+DorsetDigital\SSMinifier\Middleware:
   enable: true
   enable_in_dev: false
 ```

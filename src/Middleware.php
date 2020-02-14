@@ -1,6 +1,6 @@
 <?php
 
-namespace DorsetDigital\SSMinify;
+namespace DorsetDigital\SSMinifier;
 
 use SilverStripe\Admin\AdminRootController;
 use SilverStripe\Control\Director;
