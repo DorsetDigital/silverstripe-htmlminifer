@@ -47,7 +47,7 @@ class Middleware implements HTTPMiddleware
 
         if (($this->canRun() === true) && ($response !== null)) {
 
-            if ($this->getIsAdmin($request) === false) {
+            if (($this->getIsAdmin($request) === false) && ($this->getIsSitemap($request) === false)) {
                 $body = $response->getBody();
                 $minifier = new HtmlMin();
                 $minBody = $minifier->minify($body);
@@ -83,6 +83,20 @@ class Middleware implements HTTPMiddleware
         $adminPath = AdminRootController::admin_url();
         $currentPath = rtrim($request->getURL(), '/') . '/';
         if (substr($currentPath, 0, strlen($adminPath)) === $adminPath) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the current request is for a sitemap file
+     * @param HTTPRequest $request
+     * @return bool
+     */
+    private function getIsSitemap(HTTPRequest $request)
+    {
+        $currentPath = $request->getURL();
+        if (stristr($currentPath, 'sitemap.xml')) {
             return true;
         }
         return false;
