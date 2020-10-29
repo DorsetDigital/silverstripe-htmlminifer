@@ -16,7 +16,7 @@ The module needs to be enabled in order to work. This can be done in a yml file:
 
 ```yaml
 ---
-Name: miniferconfig
+Name: minifierconfig
 ---
 
 DorsetDigital\SSMinifier\Middleware:
