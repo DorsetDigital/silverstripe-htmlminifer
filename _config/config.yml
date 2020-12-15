@@ -7,4 +7,4 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Director:
     properties:
       Middlewares:
-        CustomCDNMiddleware: %$DorsetDigital\SSMinifier\Middleware
+        CustomCDNMiddleware: '%$DorsetDigital\SSMinifier\Middleware'
