@@ -4,17 +4,25 @@ This module minifies the HTML output of a Silverstripe site using the [HtmlMin](
 
 ## Requirements
 
+The current major version supports:
+
 - Silverstripe CMS 6.x
 - PHP 8.3+
 
-For Silverstripe CMS 4 projects, use the `cms4` branch.
+Silverstripe CMS 4 and 5 are supported by the `1.x` release line.
 
 ## Installation
 
-Install the module with Composer:
+For Silverstripe CMS 6:
 
 ```bash
-composer require dorsetdigital/silverstripe-htmlminifier
+composer require dorsetdigital/silverstripe-htmlminifier:^2
+```
+
+For Silverstripe CMS 4 or 5:
+
+```bash
+composer require dorsetdigital/silverstripe-htmlminifier:^1
 ```
 
 Then flush your Silverstripe configuration cache.
