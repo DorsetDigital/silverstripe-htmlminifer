@@ -13,13 +13,24 @@
   "require": {
     "php": "^8.3",
     "silverstripe/cms": "^6",
-    "voku/html-min": "^4"
+    "voku/html-min": "^5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11"
   },
   "license": "BSD-3-Clause",
   "autoload": {
     "psr-4": {
       "DorsetDigital\\SSMinifier\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DorsetDigital\\SSMinifier\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
   },
   "minimum-stability": "dev",
   "prefer-stable": true
