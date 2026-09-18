@@ -1,26 +1,26 @@
 {
- "name": "dorsetdigital/silverstripe-htmlminifier",
- "description": "HTML minifier for Silverstripe",
- "type": "silverstripe-vendormodule",
- "homepage": "https://github.com/DorsetDigital/silverstripe-htmlminifier",
- "keywords": ["silverstripe", "html", "minify", "performance"],
- "authors": [
-  {
-   "name": "Tim Burt",
-   "email": "tim@dorset-digital.net"
-  }
- ],
- "require": {  
-  "silverstripe/cms": "^4|^5",
-  "voku/html-min": "^4"
- },
- "license": "BSD-3-Clause",
- "autoload": {
-  "psr-4": {
-   "DorsetDigital\\SSMinifier\\": "src/"
-  }
- },
- "extra": {
- },
- "minimum-stability": "dev"
+  "name": "dorsetdigital/silverstripe-htmlminifier",
+  "description": "HTML minifier for Silverstripe",
+  "type": "silverstripe-vendormodule",
+  "homepage": "https://github.com/DorsetDigital/silverstripe-htmlminifer",
+  "keywords": ["silverstripe", "html", "minify", "performance"],
+  "authors": [
+    {
+      "name": "Tim Burt",
+      "email": "tim@dorset-digital.net"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "silverstripe/cms": "^6",
+    "voku/html-min": "^4"
+  },
+  "license": "BSD-3-Clause",
+  "autoload": {
+    "psr-4": {
+      "DorsetDigital\\SSMinifier\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
