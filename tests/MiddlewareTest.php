@@ -16,6 +16,7 @@ class MiddlewareTest extends TestCase
 
         Config::modify()->set(Middleware::class, 'enable', true);
         Config::modify()->set(Middleware::class, 'enable_in_dev', true);
+        Config::modify()->set(Middleware::class, 'options', []);
     }
 
     public function testHtmlResponseIsMinified(): void
@@ -27,6 +28,36 @@ class MiddlewareTest extends TestCase
         );
 
         $this->assertStringNotContainsString("\n", $response->getBody());
+        $this->assertStringContainsString('<p>Hello world</p>', $response->getBody());
+    }
+
+    public function testHtmlMinOptionsCanBeConfigured(): void
+    {
+        Config::modify()->set(Middleware::class, 'options', [
+            'doRemoveComments' => false,
+        ]);
+
+        $response = $this->process(
+            '/',
+            '<html><body><!-- keep me --><p>Hello world</p></body></html>',
+            'text/html'
+        );
+
+        $this->assertStringContainsString('<!-- keep me -->', $response->getBody());
+    }
+
+    public function testUnknownHtmlMinOptionsAreIgnored(): void
+    {
+        Config::modify()->set(Middleware::class, 'options', [
+            'notARealHtmlMinOption' => true,
+        ]);
+
+        $response = $this->process(
+            '/',
+            '<html>\n    <body>\n        <p>Hello world</p>\n    </body>\n</html>',
+            'text/html'
+        );
+
         $this->assertStringContainsString('<p>Hello world</p>', $response->getBody());
     }
 
