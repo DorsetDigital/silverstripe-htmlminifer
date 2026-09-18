@@ -26,6 +26,36 @@ class Middleware implements HTTPMiddleware
      */
     private static bool $enable_in_dev = false;
 
+    /**
+     * HtmlMin configuration methods and their arguments.
+     */
+    private static array $options = [];
+
+    /**
+     * HtmlMin methods which may be configured through Silverstripe config.
+     */
+    private const ALLOWED_OPTIONS = [
+        'doMakeSameDomainsLinksRelative',
+        'doMinifyJavaScript',
+        'doRemoveComments',
+        'doRemoveDefaultAttributes',
+        'doRemoveDeprecatedAnchorName',
+        'doRemoveDeprecatedScriptCharsetAttribute',
+        'doRemoveDeprecatedTypeFromScriptTag',
+        'doRemoveDeprecatedTypeFromStylesheetLink',
+        'doRemoveEmptyAttributes',
+        'doRemoveHttpPrefixFromAttributes',
+        'doRemoveHttpsPrefixFromAttributes',
+        'doRemoveOmittedHtmlTags',
+        'doRemoveOmittedQuotes',
+        'doRemoveSpacesBetweenTags',
+        'doRemoveValueFromEmptyInput',
+        'doSortCssClassNames',
+        'doSortHtmlAttributes',
+        'doSumUpWhitespace',
+        'setLocalDomains',
+    ];
+
     public function process(HTTPRequest $request, callable $delegate)
     {
         $response = $delegate($request);
@@ -44,9 +74,25 @@ class Middleware implements HTTPMiddleware
             return $response;
         }
 
-        $response->setBody((new HtmlMin())->minify($body));
+        $response->setBody($this->getMinifier()->minify($body));
 
         return $response;
+    }
+
+    private function getMinifier(): HtmlMin
+    {
+        $minifier = new HtmlMin();
+        $options = $this->config()->get('options') ?? [];
+
+        foreach ($options as $method => $value) {
+            if (!in_array($method, self::ALLOWED_OPTIONS, true) || !method_exists($minifier, $method)) {
+                continue;
+            }
+
+            $minifier->{$method}($value);
+        }
+
+        return $minifier;
     }
 
     private function canRun(): bool
