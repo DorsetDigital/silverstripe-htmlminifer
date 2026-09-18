@@ -1,18 +1,27 @@
 # Silverstripe HTML Minifier
 
-This module minifies the output of a Silverstripe site using the HtmlMin package
+This module minifies the HTML output of a Silverstripe site using the HtmlMin package.
 
-# Requirements
-*Silverstripe 4.x
+## Requirements
 
-# Installation
-* Install the code with `composer require dorsetdigital/silverstripe-htmlminifier "^1"`
-* Run a `dev/build?flush` to update your project
+- Silverstripe CMS 6.x
+- PHP 8.3+
 
-# Usage
+For Silverstripe CMS 4 projects, use the `cms4` branch.
 
-The module needs to be enabled in order to work. This can be done in a yml file:
+## Installation
 
+Install the module with Composer:
+
+```bash
+composer require dorsetdigital/silverstripe-htmlminifier
+```
+
+Then flush your Silverstripe configuration cache.
+
+## Usage
+
+The module is disabled by default. Enable it in your project configuration:
 
 ```yaml
 ---
@@ -24,17 +33,18 @@ DorsetDigital\SSMinifier\Middleware:
   enable_in_dev: false
 ```
 
-The options are hopefully fairly self explanatory:
+The available options are:
 
-* `enable` - enable minification 
-* `enable_in_dev` - enable minification in dev mode (default false)
+- `enable` - enable HTML minification.
+- `enable_in_dev` - enable minification in dev mode. Defaults to `false`.
 
-# Notes
+## Notes
 
-* The module is disabled in the CMS / admin system
+- CMS/admin requests are not minified.
+- XML sitemap responses are not minified.
+- Only HTML responses are minified.
 
+## Credits
 
-
-# Credits
-* Uses the excellent HtmlMin package (https://github.com/voku/HtmlMin)
-* As always, thanks to the core team for all their hard work.  
+- Uses the excellent HtmlMin package: https://github.com/voku/HtmlMin
+- As always, thanks to the Silverstripe core team for all their hard work.
